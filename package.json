@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -15,6 +18,7 @@
     "@mui/material": "^5.10.0",
     "@reduxjs/toolkit": "^1.8.3",
     "framer-motion": "^7.1.0",
+    "history": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.10.1",
@@ -26,11 +30,18 @@
     "vite-tsconfig-paths": "^3.5.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@types/react-slick": "^0.23.10",
     "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.25.6",
+    "jsdom": "^20.0.3",
     "typescript": "^4.6.4",
-    "vite": "^3.2.1"
+    "vite": "^3.2.1",
+    "vitest": "^0.25.6"
   }
 }
