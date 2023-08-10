@@ -6,11 +6,8 @@ import Divider from "@mui/material/Divider";
 export default function Footer() {
   return (
     <Box
+      component="footer"
       sx={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -19,21 +16,24 @@ export default function Footer() {
         px: "60px",
       }}
     >
-      <Box>
-        <Divider>
-          <Typography color="grey.700" variant="h6">
-            Developed by{" "}
-            <Link
-              href="https://github.com/crazy-man22"
-              underline="none"
-              sx={{ color: "text.primary" }}
-              target="_blank"
-            >
-              Crazy Man
-            </Link>
-          </Typography>
-        </Divider>
-      </Box>
+      <Divider
+        component="div"
+        sx={{
+          "::before, ::after": { top: "0%" },
+        }}
+      >
+        <Typography color="grey.700" variant="h6" component="span">
+          Developed by{" "}
+          <Link
+            target="_blank"
+            underline="none"
+            sx={{ color: "text.primary" }}
+            href="https://github.com/crazy-man22"
+          >
+            Crazy Man
+          </Link>
+        </Typography>
+      </Divider>
     </Box>
   );
 }
