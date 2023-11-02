@@ -2,6 +2,6 @@ version: '3.9'
 
 services:
   web:
-    image: "anirudhadak2/new-app:calculategrowth"
+    image: "anirudhadak2/new-app:netflix-clone"
     ports:
       - "80:80"
