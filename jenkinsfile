@@ -1,0 +1,35 @@
+pipeline {
+    agent  any
+        stages{
+        stage("Git Clone"){
+            steps{
+                git url: "https://github.com/anirudhadak2/netflix-clone-Docker-Kubernetes.git", branch: "main"
+            }
+        }
+        stage("Create Docker Image"){
+            steps{
+		echo "Build and Test"
+		withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+		sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker build --build-arg TMDB_V3_API_KEY=adb1bdd5c4493c7c944db22009ff2d46  -t netflix-clone ."
+                                             # Pate Api Key 
+		}
+            }
+        }
+         stage("Push DockerImage to DockrHub"){
+            steps{
+                withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker images"
+                sh " docker tag  netflix-clone   anirudhadak2/new-app:netflix-clone"
+		sh "docker push anirudhadak2/new-app:netflix-clone"
+		}
+	    }
+	}
+        stage("Deploy Using DOcker Compose"){
+            steps{   
+		 sh "docker-compose down && docker-compose up -d"           
+                }
+            }
+        }
+    }
