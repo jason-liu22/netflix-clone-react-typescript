@@ -43,7 +43,7 @@
   <p align="center">Grid Genre Page</p>
   <img src="./public/assets/watch.png" alt="Logo" width="100%" height="100%">
   <p align="center">Watch Page with customer contol bar</p>
-</div>
+</div>cinthia johana
 
 ## Prerequests
 
